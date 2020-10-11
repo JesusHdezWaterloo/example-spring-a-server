@@ -1,8 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.1.7.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
-    id 'war'
 }
 
 group = 'com.jhw.example'
@@ -12,25 +9,8 @@ repositories {
     mavenCentral()
 }
 
-war {
-    baseName = 'spring'
-    version = '0.1.0'
-}
-
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    
-    /*implementation ('org.springframework.boot:spring-boot-starter-data-redis'){
-        exclude group: 'io.lettuce', module: 'lettuce-core'
-    }
-    implementation 'redis.clients:jedis'*/
-    
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-    
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    
+    compile group: 'org.springframework', name: 'spring-web', version: '5.2.9.RELEASE'
     
     implementation project(':utils-core')
     
@@ -39,6 +19,16 @@ dependencies {
     implementation project(':example-spring-a-standard')
     //implementation project(':module-util-mysql')
     
+    
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
+    
+    //EclipseLink
+    compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.7.6'
+    compile group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa', version: '2.7.6'
+    
+    //injection
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
 }
 
 test {
