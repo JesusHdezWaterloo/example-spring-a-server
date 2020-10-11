@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compile group: 'org.springframework', name: 'spring-web', version: '5.2.9.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.2.9.RELEASE'
     
     implementation project(':utils-core')
     
