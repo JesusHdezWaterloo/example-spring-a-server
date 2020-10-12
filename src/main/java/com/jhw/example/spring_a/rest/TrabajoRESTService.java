@@ -11,9 +11,7 @@ import com.jhw.example.spring_a.core.module.SpringACoreModule;
 import com.jhw.example.spring_a.core.usecase_def.TrabajoUseCase;
 import java.beans.PropertyChangeListener;
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -23,65 +21,65 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = SpringAConstants.PATH_TRABAJO_GENERAL)
 public class TrabajoRESTService implements TrabajoUseCase {
 
-    private final TrabajoUseCase colUC = SpringACoreModule.getInstance().getImplementation(TrabajoUseCase.class);
+    private final TrabajoUseCase trabajoUC = SpringACoreModule.getInstance().getImplementation(TrabajoUseCase.class);
 
     @Override
     @ResponseBody
-    @RequestMapping(SpringAConstants.PATH_TRABAJO_CREATE)
-    public TrabajoDomain create(TrabajoDomain t) throws Exception {
-        return colUC.create(t);
+    @PostMapping(SpringAConstants.PATH_TRABAJO_CREATE)
+    public TrabajoDomain create(@RequestBody TrabajoDomain t) throws Exception {
+        return trabajoUC.create(t);
     }
 
     @Override
     @ResponseBody
-    @RequestMapping(SpringAConstants.PATH_TRABAJO_EDIT)
-    public TrabajoDomain edit(TrabajoDomain t) throws Exception {
-        return colUC.edit(t);
-    }
-
-    @Override
-    @ResponseBody
-    @RequestMapping(SpringAConstants.PATH_TRABAJO_DESTROY)
-    public TrabajoDomain destroy(TrabajoDomain t) throws Exception {
-        return colUC.destroy(t);
-    }
-
-    @Override
-    @ResponseBody
-    @RequestMapping(SpringAConstants.PATH_TRABAJO_DESTROY_ID)
-    public TrabajoDomain destroyById(Object o) throws Exception {
-        return colUC.destroyById(o);
-    }
-
-    @Override
-    @ResponseBody
-    @RequestMapping(SpringAConstants.PATH_TRABAJO_FIND_BY)
-    public TrabajoDomain findBy(Object o) throws Exception {
-        return colUC.findBy(o);
-    }
-
-    @Override
-    @ResponseBody
-    @RequestMapping(SpringAConstants.PATH_TRABAJO_FIND_ALL)
+    @GetMapping(SpringAConstants.PATH_TRABAJO_FIND_ALL)
     public List<TrabajoDomain> findAll() throws Exception {
-        return colUC.findAll();
+        return trabajoUC.findAll();
     }
 
     @Override
     @ResponseBody
-    @RequestMapping(SpringAConstants.PATH_TRABAJO_COUNT)
+    @PostMapping(SpringAConstants.PATH_TRABAJO_EDIT)
+    public TrabajoDomain edit(@RequestBody TrabajoDomain t) throws Exception {
+        return trabajoUC.edit(t);
+    }
+
+    @Override
+    @ResponseBody
+    @PostMapping(SpringAConstants.PATH_TRABAJO_DESTROY)
+    public TrabajoDomain destroy(@RequestBody TrabajoDomain t) throws Exception {
+        return trabajoUC.destroy(t);
+    }
+
+    @Override
+    @ResponseBody
+    @PostMapping(SpringAConstants.PATH_TRABAJO_DESTROY_ID)
+    public TrabajoDomain destroyById(@RequestBody Object id) throws Exception {
+        return trabajoUC.destroyById(id);
+    }
+
+    @Override
+    @ResponseBody
+    @GetMapping(SpringAConstants.PATH_TRABAJO_FIND_BY + "/{id}")
+    public TrabajoDomain findBy(@PathVariable("id") Object id) throws Exception {
+        return trabajoUC.findBy(Integer.parseInt(id.toString()));
+    }
+
+    @Override
+    @ResponseBody
+    @GetMapping(SpringAConstants.PATH_TRABAJO_COUNT)
     public int count() throws Exception {
-        return colUC.count();
+        return trabajoUC.count();
     }
 
     @Override
     public void addPropertyChangeListener(PropertyChangeListener pl) {
-        colUC.addPropertyChangeListener(pl);
+        trabajoUC.addPropertyChangeListener(pl);
     }
 
     @Override
     public void removePropertyChangeListener(PropertyChangeListener pl) {
-        colUC.removePropertyChangeListener(pl);
+        trabajoUC.removePropertyChangeListener(pl);
     }
 
 }
