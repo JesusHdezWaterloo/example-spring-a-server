@@ -24,49 +24,42 @@ public class TrabajoRESTService implements TrabajoUseCase {
     private final TrabajoUseCase trabajoUC = SpringACoreModule.getInstance().getImplementation(TrabajoUseCase.class);
 
     @Override
-    @ResponseBody
     @PostMapping(SpringAConstants.PATH_TRABAJO_CREATE)
     public TrabajoDomain create(@RequestBody TrabajoDomain t) throws Exception {
         return trabajoUC.create(t);
     }
 
     @Override
-    @ResponseBody
     @GetMapping(SpringAConstants.PATH_TRABAJO_FIND_ALL)
     public List<TrabajoDomain> findAll() throws Exception {
         return trabajoUC.findAll();
     }
 
     @Override
-    @ResponseBody
     @PostMapping(SpringAConstants.PATH_TRABAJO_EDIT)
     public TrabajoDomain edit(@RequestBody TrabajoDomain t) throws Exception {
         return trabajoUC.edit(t);
     }
 
     @Override
-    @ResponseBody
     @PostMapping(SpringAConstants.PATH_TRABAJO_DESTROY)
     public TrabajoDomain destroy(@RequestBody TrabajoDomain t) throws Exception {
         return trabajoUC.destroy(t);
     }
 
     @Override
-    @ResponseBody
     @PostMapping(SpringAConstants.PATH_TRABAJO_DESTROY_ID)
     public TrabajoDomain destroyById(@RequestBody Object id) throws Exception {
         return trabajoUC.destroyById(id);
     }
 
     @Override
-    @ResponseBody
-    @GetMapping(SpringAConstants.PATH_TRABAJO_FIND_BY + "/{id}")
+    @GetMapping(SpringAConstants.PATH_TRABAJO_FIND_BY)
     public TrabajoDomain findBy(@PathVariable("id") Object id) throws Exception {
         return trabajoUC.findBy(Integer.parseInt(id.toString()));
     }
 
     @Override
-    @ResponseBody
     @GetMapping(SpringAConstants.PATH_TRABAJO_COUNT)
     public int count() throws Exception {
         return trabajoUC.count();
