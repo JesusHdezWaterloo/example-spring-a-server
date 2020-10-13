@@ -8,11 +8,7 @@ package com.jhw.example.spring_a.rest.clean;
 import com.clean.core.app.usecase.CRUDUseCase;
 import java.beans.PropertyChangeListener;
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -20,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @param <T>
  */
 @RestController
-public class CleanRESTServiceFull<T> implements CRUDUseCase<T> {
+public class RESTServiceTemplateFull<T> implements CRUDUseCase<T> {
 
     protected final CRUDUseCase<T> uc;
 
-    public CleanRESTServiceFull(CRUDUseCase<T> cleanUC) {
+    public RESTServiceTemplateFull(CRUDUseCase<T> cleanUC) {
         this.uc = cleanUC;
     }
 
