@@ -10,6 +10,7 @@ import com.jhw.example.spring_a.core.domain.TrabajoDomain;
 import com.jhw.example.spring_a.core.module.SpringACoreModule;
 import com.jhw.example.spring_a.core.usecase_def.TrabajoUseCase;
 import com.jhw.utils.spring.server.RESTServiceTemplateFull;
+import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,10 +19,18 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(value = SpringAConstants.PATH_TRABAJO_GENERAL)
-public class TrabajoRESTService extends RESTServiceTemplateFull<TrabajoDomain> {
+public class TrabajoRESTService extends RESTServiceTemplateFull<TrabajoDomain> implements TrabajoUseCase {
+
+    private final TrabajoUseCase trabajoUC = SpringACoreModule.getInstance().getImplementation(TrabajoUseCase.class);
 
     public TrabajoRESTService() {
-        super(SpringACoreModule.getInstance().getImplementation(TrabajoUseCase.class));
+        setUseCase(trabajoUC);
+    }
+
+    @Override
+    @GetMapping(SpringAConstants.PATH_TRABAJO_UPPER_BASICO)
+    public List<TrabajoDomain> upperBasico() throws Exception {
+        return trabajoUC.upperBasico();
     }
 
 }
