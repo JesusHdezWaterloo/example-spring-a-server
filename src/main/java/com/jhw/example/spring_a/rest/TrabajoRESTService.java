@@ -9,7 +9,7 @@ import com.jhw.example.spring_a.core.SpringAConstants;
 import com.jhw.example.spring_a.core.domain.TrabajoDomain;
 import com.jhw.example.spring_a.core.module.SpringACoreModule;
 import com.jhw.example.spring_a.core.usecase_def.TrabajoUseCase;
-import com.jhw.example.spring_a.rest.clean.RESTServiceTemplateFull;
+import com.jhw.utils.spring.server.RESTServiceTemplateFull;
 import org.springframework.web.bind.annotation.*;
 
 /**

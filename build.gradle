@@ -14,11 +14,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-context', version: '5.2.9.RELEASE'
     
     implementation project(':utils-core')
+    implementation project(':utils-spring')
     
     implementation project(':clean-core-full')
-    implementation project(':clean-swing')
     implementation project(':example-spring-a-standard')
-    //implementation project(':module-util-mysql')
     
     
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
