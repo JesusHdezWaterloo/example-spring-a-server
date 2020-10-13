@@ -6,7 +6,6 @@
 package com.jhw.example.spring_a.rest.clean;
 
 import com.clean.core.app.usecase.CRUDUseCase;
-import com.jhw.example.spring_a.core.SpringAConstants;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,43 +29,43 @@ public class CleanRESTServiceFull<T> implements CRUDUseCase<T> {
     }
 
     @Override
-    @PostMapping(SpringAConstants.PATH_TRABAJO_CREATE)
+    @PostMapping(RESTUrlConstants.PATH_TRABAJO_CREATE)
     public T create(@RequestBody T t) throws Exception {
         return uc.create(t);
     }
 
     @Override
-    @GetMapping(SpringAConstants.PATH_TRABAJO_FIND_ALL)
+    @GetMapping(RESTUrlConstants.PATH_TRABAJO_FIND_ALL)
     public List<T> findAll() throws Exception {
         return uc.findAll();
     }
 
     @Override
-    @PostMapping(SpringAConstants.PATH_TRABAJO_EDIT)
+    @PostMapping(RESTUrlConstants.PATH_TRABAJO_EDIT)
     public T edit(@RequestBody T t) throws Exception {
         return uc.edit(t);
     }
 
     @Override
-    @PostMapping(SpringAConstants.PATH_TRABAJO_DESTROY)
+    @PostMapping(RESTUrlConstants.PATH_TRABAJO_DESTROY)
     public T destroy(@RequestBody T t) throws Exception {
         return uc.destroy(t);
     }
 
     @Override
-    @PostMapping(SpringAConstants.PATH_TRABAJO_DESTROY_ID)
+    @PostMapping(RESTUrlConstants.PATH_TRABAJO_DESTROY_ID)
     public T destroyById(@RequestBody Object id) throws Exception {
         return uc.destroyById(id);
     }
 
     @Override
-    @GetMapping(SpringAConstants.PATH_TRABAJO_FIND_BY)
+    @GetMapping(RESTUrlConstants.PATH_TRABAJO_FIND_BY)
     public T findBy(@PathVariable("id") Object id) throws Exception {
         return uc.findBy(Integer.parseInt(id.toString()));
     }
 
     @Override
-    @GetMapping(SpringAConstants.PATH_TRABAJO_COUNT)
+    @GetMapping(RESTUrlConstants.PATH_TRABAJO_COUNT)
     public int count() throws Exception {
         return uc.count();
     }
